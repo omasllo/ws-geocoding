@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+ 
+    <Appenders>
+        <RollingFile name="LogAppender" fileName="ws-geocoding.log" filePattern="${basePath}/ws-geocoding-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%d [%t] %-5p: %c - %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout   pattern="%d [%t] %-5p: %c - %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="o.masllo.wsgeocoding" level="debug" additivity="false">
+            <appender-ref ref="LogAppender" level="debug" />
+        </Logger>
+        <Root level="info" additivity="false">
+            <appender-ref ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>
